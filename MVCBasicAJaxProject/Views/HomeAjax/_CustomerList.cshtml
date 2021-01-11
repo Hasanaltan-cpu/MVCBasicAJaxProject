@@ -1,0 +1,21 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using MVCBasicAJaxProject.Models
+@model Musteriler
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Customers</h2>
+
+<div id="dvCustomerFilter">
+    <input type="text" value="Company Name" id="txtCompanyName" name="txtCompanyName" />
+    <input type="text" value="Customer Name" id="txtCustomerName" name="txtCustomerName" />
+    <input type="text" value="City" id="txtCity" name="txtCity" />
+    <input type="submit" value="Search" id="btnSearch" />
+</div>
+<div id="dvCustomerList">
+    @Html.Partial("~/Views/Home/_CustomerList.cshtml", Model)
+</div>

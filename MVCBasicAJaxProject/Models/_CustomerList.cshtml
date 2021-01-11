@@ -1,0 +1,27 @@
+﻿
+@using PagedList
+@using PagedList.Mvc
+@using MVCBasicAJaxProject.Models
+@model _CustomerList
+
+<table>
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Customer Name</th>
+            <th>city</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Customer in Model.CustomerList)
+        {
+            <tr>
+                <td>@Customer.CompanyName</td>
+                <td>@Customer.CustomerName</td>
+                <td>@Customer.City</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

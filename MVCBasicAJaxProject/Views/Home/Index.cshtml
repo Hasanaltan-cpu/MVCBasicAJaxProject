@@ -1,0 +1,37 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using MVCBasicAJaxProject.Models
+@model IPagedList<CustomerList>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Customers</h2>
+<div id="dvCustomerList">
+    @Html.Partial("~/Views/Home/_CustomerList.cshtml", Model)
+</div>
+<div id="dvCustomerList">
+    <table>
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Customer Name</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Customer in Model)
+            {
+                <tr>
+                    <td>@Customer.CompanyName</td>
+                    <td>@Customer.CustomerName</td>
+                    <td>@Customer.City</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    @Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Home", new { PageNo = _pageNo }))
+</div>

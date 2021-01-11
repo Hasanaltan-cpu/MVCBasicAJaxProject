@@ -1,0 +1,26 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using MVCBasicAJaxProject.Models
+@model IPagedList<CustomerList>
+
+<table>
+    <thead>
+        <tr>
+            <th>Şirket Adı</th>
+            <th>Müşteri Adı</th>
+            <th>Şehir</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Musteri in Model)
+        {
+            <tr>
+                <td>@Musteri.SirketAdi</td>
+                <td>@Musteri.MusteriAdi</td>
+                <td>@Musteri.Sehir</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, _pageNo => Url.Action("Index", "Home", new { PageNo = _pageNo }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "dvCustomerList" }))
